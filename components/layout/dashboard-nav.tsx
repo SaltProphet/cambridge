@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 import { LayoutDashboard, Video, Activity, Settings } from "lucide-react";
 
 const navItems = [
-  { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
-  { href: "/dashboard/rooms", label: "Rooms", icon: Video },
-  { href: "/dashboard/usage", label: "Usage", icon: Activity },
-  { href: "/dashboard/admin", label: "Admin", icon: Settings },
+  { href: "/creator", label: "Overview", icon: LayoutDashboard },
+  { href: "/creator/rooms", label: "Rooms", icon: Video },
+  { href: "/creator/usage", label: "Usage", icon: Activity },
+  { href: "/admin", label: "Admin", icon: Settings },
 ];
 
 export function DashboardNav() {
@@ -28,7 +28,7 @@ export function DashboardNav() {
             className={cn(
               "flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors border-b-2 -mb-px",
               isActive
-                ? "border-accent text-accent"
+                ? "border-foreground text-foreground"
                 : "border-transparent text-muted-foreground hover:text-foreground"
             )}
           >

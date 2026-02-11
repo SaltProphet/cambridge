@@ -8,9 +8,9 @@ export default function DashboardLayout({
   return (
     <div className="container mx-auto px-6 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Creator Dashboard</h1>
+        <h1 className="text-3xl font-bold mb-2">Creator</h1>
         <p className="text-muted-foreground">
-          Manage your rooms, monitor usage, and track metrics
+          Manage rooms and monitor usage
         </p>
       </div>
       <DashboardNav />

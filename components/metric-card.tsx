@@ -25,7 +25,7 @@ export function MetricCard({ title, value, description, icon: Icon, trend }: Met
           <p className="text-xs text-muted-foreground mt-1">{description}</p>
         )}
         {trend && (
-          <p className={`text-xs mt-1 ${trend.value >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+          <p className="text-xs mt-1 text-muted-foreground">
             {trend.value >= 0 ? '+' : ''}{trend.value}% {trend.label}
           </p>
         )}

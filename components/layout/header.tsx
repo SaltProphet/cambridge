@@ -6,7 +6,7 @@ export function Header() {
     <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-accent">
+          <Link href="/" className="text-2xl font-bold">
             CamBridge
           </Link>
           
@@ -14,20 +14,20 @@ export function Header() {
             <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Home
             </Link>
-            <Link href="/founders" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/apply" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Apply
             </Link>
-            <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Dashboard
+            <Link href="/creator" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Creator
             </Link>
           </nav>
 
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/dashboard">Sign In</Link>
+              <Link href="/creator">Sign In</Link>
             </Button>
             <Button size="sm" asChild>
-              <Link href="/founders">Get Started</Link>
+              <Link href="/apply">Get Started</Link>
             </Button>
           </div>
         </div>
