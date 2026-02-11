@@ -81,24 +81,24 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Up to 5 creators</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">100 hours/month included</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Basic analytics</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Email support</span>
-                  </li>
-                </ul>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">5 creators</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">100 hours/month</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Basic analytics</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Email support</span>
+                  </div>
+                </div>
                 <Button className="w-full" variant="outline" asChild>
                   <Link href="/founders">Get Started</Link>
                 </Button>
@@ -117,28 +117,28 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Up to 25 creators</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">500 hours/month included</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Advanced analytics & reports</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Priority support</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Custom branding</span>
-                  </li>
-                </ul>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/10">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">25 creators</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/10">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">500 hours/month</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/10">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Advanced analytics</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/10">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Priority support</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/10">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Custom branding</span>
+                  </div>
+                </div>
                 <Button className="w-full" asChild>
                   <Link href="/founders">Get Started</Link>
                 </Button>
@@ -154,28 +154,28 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Unlimited creators</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Custom hours allocation</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Dedicated support</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">SLA guarantees</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                    <span className="text-sm">Custom integrations</span>
-                  </li>
-                </ul>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Unlimited creators</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Custom hours</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Dedicated support</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">SLA guarantees</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-accent/5">
+                    <Check className="h-5 w-5 text-accent shrink-0" />
+                    <span className="text-sm font-medium">Custom integrations</span>
+                  </div>
+                </div>
                 <Button className="w-full" variant="outline" asChild>
                   <Link href="/founders">Contact Sales</Link>
                 </Button>
@@ -185,54 +185,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Security Section */}
+      {/* Security Section - Redesigned */}
       <section className="container mx-auto px-6 py-16">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-card/50">
-            <CardHeader className="text-center">
-              <Shield className="h-12 w-12 text-accent mx-auto mb-4" />
-              <CardTitle className="text-3xl">Enterprise-Grade Security</CardTitle>
-              <CardDescription className="text-base mt-4">
-                Your data and your users&apos; privacy are our top priority
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Infrastructure</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• SOC 2 Type II certified</li>
-                    <li>• End-to-end encryption</li>
-                    <li>• Regular security audits</li>
-                  </ul>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <Shield className="h-16 w-16 text-accent mx-auto mb-6" />
+            <h2 className="text-4xl font-bold mb-4">Enterprise-Grade Security</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Bank-level security infrastructure protecting your data and privacy at every layer
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="bg-gradient-to-br from-card to-card/50 border-accent/20">
+              <CardHeader>
+                <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                  <Shield className="h-6 w-6 text-accent" />
                 </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Compliance</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• GDPR compliant</li>
-                    <li>• HIPAA available</li>
-                    <li>• Data residency options</li>
-                  </ul>
+                <CardTitle className="text-xl">Infrastructure</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  SOC 2 Type II certified infrastructure with end-to-end encryption and regular third-party security audits
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-card to-card/50 border-accent/20">
+              <CardHeader>
+                <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                  <svg className="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
                 </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Access Control</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• SSO integration</li>
-                    <li>• Role-based permissions</li>
-                    <li>• Audit logging</li>
-                  </ul>
+                <CardTitle className="text-xl">Compliance</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  GDPR and HIPAA compliant with flexible data residency options to meet your regulatory requirements
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-card to-card/50 border-accent/20">
+              <CardHeader>
+                <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                  <svg className="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
                 </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold">Monitoring</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Real-time threat detection</li>
-                    <li>• Anomaly detection</li>
-                    <li>• 24/7 security operations</li>
-                  </ul>
-                </div>
+                <CardTitle className="text-xl">Monitoring</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  24/7 security operations with real-time threat detection, anomaly monitoring, and instant alerts
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-12 p-8 rounded-xl bg-accent/5 border border-accent/20">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Need custom security requirements?</h3>
+                <p className="text-muted-foreground">
+                  We work with enterprises to meet specialized compliance and security needs
+                </p>
               </div>
-            </CardContent>
-          </Card>
+              <Button size="lg" asChild>
+                <Link href="/founders">Contact Security Team</Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
