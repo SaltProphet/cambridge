@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-bold text-accent mb-4">CamBridge</h3>
+            <h3 className="text-lg font-bold mb-4">CamBridge</h3>
             <p className="text-sm text-muted-foreground">
               Enterprise 1-to-1 cam sharing with cost controls and security.
             </p>
@@ -37,7 +37,7 @@ export function Footer() {
             <h4 className="text-sm font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/founders" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/apply" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   Apply
                 </Link>
               </li>
