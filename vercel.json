@@ -9,5 +9,27 @@
   "env": {
     "NEXT_PUBLIC_APP_NAME": "CamBridge",
     "NEXT_PUBLIC_APP_URL": "https://cam-bridge.vercel.app"
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/creator/register",
+      "destination": "/pages/creator-signup.html"
+    },
+    {
+      "source": "/creator/login",
+      "destination": "/pages/creator-login.html"
+    },
+    {
+      "source": "/creator/dashboard",
+      "destination": "/pages/creator-dashboard.html"
+    },
+    {
+      "source": "/r/:creatorSlug",
+      "destination": "/room.html"
+    },
+    {
+      "source": "/r/:creatorSlug/:roomSlug",
+      "destination": "/room.html"
+    }
+  ]
 }
