@@ -49,7 +49,7 @@ export async function POST(request) {
       return NextResponse.json({
         success: true,
         devLogged: true,
-        id: `dev-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        id: `dev-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`,
         status: 'pending',
         message: 'Development mode: Request logged to console (no database configured)'
       });
