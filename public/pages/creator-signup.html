@@ -104,7 +104,7 @@
       <h1>Create Account</h1>
       <p class="subtitle">Sign up to start creating rooms</p>
       
-      <form>
+      <form id="signupForm">
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="you@example.com" required>
@@ -120,7 +120,9 @@
           <input type="password" id="password" name="password" placeholder="••••••••" required>
         </div>
         
-        <button type="submit" class="btn">Create Account</button>
+        <button type="submit" class="btn" id="submitBtn">Create Account</button>
+        
+        <div id="statusMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 0.375rem; display: none;"></div>
       </form>
       
       <div class="footer-link">
@@ -128,5 +130,62 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // Show status message
+    function showStatus(message, isError = false) {
+      const statusEl = document.getElementById('statusMessage');
+      statusEl.textContent = message;
+      statusEl.style.display = 'block';
+      statusEl.style.background = isError ? '#2D1010' : '#0F2D1A';
+      statusEl.style.border = isError ? '1px solid #4D1F1F' : '1px solid #1F4D2D';
+      statusEl.style.color = isError ? '#FF6B6B' : '#6BFF8B';
+    }
+
+    // Handle form submission
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const statusEl = document.getElementById('statusMessage');
+      
+      // Get form data
+      const email = document.getElementById('email').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      
+      // Basic validation
+      if (password.length < 8) {
+        showStatus('Password must be at least 8 characters long', true);
+        return;
+      }
+      
+      // Disable submit button
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating Account...';
+      statusEl.style.display = 'none';
+      
+      try {
+        // Note: This is a placeholder for Phase 3 user registration
+        // For now, we'll show that the feature is coming soon
+        showStatus('Account creation is coming in Phase 3. This form is currently non-functional.', false);
+        
+        // In Phase 3, this would be:
+        // const response = await fetch('/api/auth/register', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ email, username, password })
+        // });
+        
+      } catch (error) {
+        console.error('Error creating account:', error);
+        showStatus('An error occurred. Please try again.', true);
+      } finally {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create Account';
+      }
+    });
+  </script>
 </body>
 </html>

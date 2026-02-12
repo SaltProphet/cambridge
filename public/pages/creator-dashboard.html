@@ -102,8 +102,59 @@
     
     <div class="card">
       <h3>Recent Activity</h3>
-      <p class="description">No recent sessions</p>
+      <p class="description" id="activityStatus">Loading...</p>
     </div>
   </div>
+
+  <script>
+    // Check for authentication token
+    function getAuthToken() {
+      return localStorage.getItem('authToken');
+    }
+
+    // Show error message
+    function showError(message) {
+      document.getElementById('activityStatus').textContent = message;
+    }
+
+    // Load dashboard data
+    async function loadDashboardData() {
+      const token = getAuthToken();
+      
+      if (!token) {
+        // No token - redirect to login after a short delay
+        document.getElementById('activityStatus').textContent = 'Not authenticated. Redirecting to login...';
+        setTimeout(() => {
+          window.location.href = '/creator/login';
+        }, 2000);
+        return;
+      }
+
+      try {
+        // In Phase 2b/3, this would load actual creator data
+        // For now, show that authentication is not yet implemented
+        document.getElementById('activityStatus').textContent = 'Dashboard data loading requires authentication (Phase 3)';
+        
+        // When authentication is implemented in Phase 3:
+        // const response = await fetch('/api/creator/requests', {
+        //   headers: {
+        //     'Authorization': `Bearer ${token}`
+        //   }
+        // });
+        //
+        // if (response.ok) {
+        //   const data = await response.json();
+        //   // Update dashboard with real data
+        // }
+        
+      } catch (error) {
+        console.error('Error loading dashboard:', error);
+        showError('Failed to load dashboard data');
+      }
+    }
+
+    // Load data on page load
+    loadDashboardData();
+  </script>
 </body>
 </html>
