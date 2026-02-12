@@ -1,4 +1,4 @@
-const { requireAuth, getCreatorByUserId } = require('../../_utils/auth');
+const { requireAuth, getCreatorByUserId } = require('../_utils/auth');
 const { sql } = require('@vercel/postgres');
 
 /**
