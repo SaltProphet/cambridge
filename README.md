@@ -2,6 +2,10 @@
 
 Enterprise 1-to-1 cam sharing system with cost controls and security.
 
+## 🚀 Live Demo
+
+Visit the deployed application at: **[https://cam-bridge.vercel.app](https://cam-bridge.vercel.app)**
+
 ## Overview
 
 CamBridge is a Next.js 14 application for managing 1-to-1 video sessions with granular usage caps, billing controls, and enterprise security features. This Phase 1 implementation focuses on the frontend UI with read-only stubs for all functionality.
@@ -62,6 +66,12 @@ npm run dev
 - `npm run build` - Build for production
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
+
+## Deployment
+
+The application is automatically deployed to Vercel at **cam-bridge.vercel.app** when changes are pushed to the main branch.
+
+For detailed deployment instructions and setup, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Project Structure
 
