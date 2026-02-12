@@ -7,7 +7,7 @@ import { generateToken } from './auth';
  * 
  * @param {string} joinRequestId - The ID of the approved join request
  * @param {number} expiresInDays - Number of days until token expires (default: 7)
- * @returns {Promise<{success: boolean, token?: string, expiresAt?: string, error?: string, existing?: boolean}>}
+ * @returns {Promise<{success: boolean, token?: string, expiresAt?: string, error?: string, existing?: boolean, joinRequestId?: string, devMode?: boolean}>}
  */
 export async function generateAccessToken(joinRequestId, expiresInDays = 7) {
   try {
