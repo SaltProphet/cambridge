@@ -122,8 +122,11 @@
       const token = getAuthToken();
       
       if (!token) {
-        // No token - show placeholder state
-        document.getElementById('activityStatus').textContent = 'Please log in to view your dashboard data';
+        // No token - redirect to login after a short delay
+        document.getElementById('activityStatus').textContent = 'Not authenticated. Redirecting to login...';
+        setTimeout(() => {
+          window.location.href = '/creator/login';
+        }, 2000);
         return;
       }
 
