@@ -1,5 +1,6 @@
 const { requireAuth, getCreatorByUserId } = require('../_utils/auth');
 const { sql } = require('@vercel/postgres');
+const { generateAccessToken } = require('../_utils/tokens');
 
 /**
  * Vercel serverless function to approve a join request
@@ -108,16 +109,26 @@ module.exports = async (req, res) => {
       WHERE id = ${requestId}
     `;
 
-    // TODO: Trigger token generation for the approved user
-    // This will be implemented in the next phase
+    // Automatically generate access token for the approved user
+    const tokenResult = await generateAccessToken(requestId);
+    
+    // Include token in response if successfully generated
+    const responseData = {
+      requestId,
+      status: 'approved',
+      approvedAt: new Date().toISOString()
+    };
+
+    if (tokenResult.success && tokenResult.token) {
+      responseData.accessToken = {
+        token: tokenResult.token,
+        expiresAt: tokenResult.expiresAt
+      };
+    }
 
     return res.status(200).json({
       success: true,
-      data: {
-        requestId,
-        status: 'approved',
-        approvedAt: new Date().toISOString()
-      }
+      data: responseData
     });
 
   } catch (error) {

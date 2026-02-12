@@ -1,5 +1,6 @@
 import { requireAuth, getCreatorByUserId } from '../../_utils/auth';
 import { sql } from '@vercel/postgres';
+import { generateAccessToken } from '../../_utils/tokens';
 
 /**
  * POST /api/creator/requests-approve
@@ -127,17 +128,27 @@ export async function POST(req) {
       WHERE id = ${requestId}
     `;
 
-    // TODO: Trigger token generation for the approved user
-    // This will be implemented in the next phase
+    // Automatically generate access token for the approved user
+    const tokenResult = await generateAccessToken(requestId);
+    
+    // Include token in response if successfully generated
+    const responseData = {
+      requestId,
+      status: 'approved',
+      approvedAt: new Date().toISOString()
+    };
+
+    if (tokenResult.success && tokenResult.token) {
+      responseData.accessToken = {
+        token: tokenResult.token,
+        expiresAt: tokenResult.expiresAt
+      };
+    }
 
     return new Response(
       JSON.stringify({
         success: true,
-        data: {
-          requestId,
-          status: 'approved',
-          approvedAt: new Date().toISOString()
-        }
+        data: responseData
       }),
       {
         status: 200,
