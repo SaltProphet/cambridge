@@ -71,6 +71,9 @@ module.exports = async (req, res) => {
           token: tokenResult.token,
           expiresAt: tokenResult.expiresAt
         };
+      } else if (!tokenResult.success) {
+        // Log token generation failure but don't fail the approval
+        console.error('Failed to auto-generate token in dev mode:', requestId, tokenResult.error);
       }
       
       return res.status(200).json({
@@ -136,6 +139,10 @@ module.exports = async (req, res) => {
         token: tokenResult.token,
         expiresAt: tokenResult.expiresAt
       };
+    } else if (!tokenResult.success) {
+      // Log token generation failure but don't fail the approval
+      // The request is still approved, token can be generated later
+      console.error('Failed to auto-generate token for approved request:', requestId, tokenResult.error);
     }
 
     return res.status(200).json({
