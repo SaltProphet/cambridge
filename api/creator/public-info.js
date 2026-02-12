@@ -1,4 +1,5 @@
 const { parseCreatorSlugFromPath } = require('../_utils/paths');
+const { sql } = require('@vercel/postgres');
 
 /**
  * Vercel serverless function to get creator public information
@@ -33,29 +34,74 @@ module.exports = async (req, res) => {
       });
     }
 
-    // TODO: Replace with actual database query
-    // For now, return mock data or 404
-    // Example SQL query would be:
-    // SELECT username, display_name, bio, avatar_url, tier 
-    // FROM creators 
-    // WHERE LOWER(username) = LOWER($1) AND is_active = true
+    // Check if database is configured
+    const hasDatabase = process.env.POSTGRES_URL || process.env.DATABASE_URL;
     
-    // Mock response - in production, this would query the database
-    const mockCreators = {
-      'testcreator': {
-        username: 'testcreator',
-        displayName: 'Test Creator',
-        bio: 'A test creator account',
-        tier: 'free'
+    if (!hasDatabase) {
+      // Development mode: return mock data
+      console.log('DEV_NO_DB: Returning mock creator info for slug:', creatorSlug);
+      
+      const mockCreators = {
+        'testcreator': {
+          username: 'testcreator',
+          displayName: 'Test Creator',
+          bio: 'A test creator account',
+          tier: 'free',
+          avatarUrl: null
+        }
+      };
+
+      const creator = mockCreators[creatorSlug];
+
+      if (!creator) {
+        return res.status(404).json({ 
+          error: 'Creator not found',
+          message: `No creator found with slug: ${creatorSlug}`,
+          devMode: true
+        });
       }
-    };
 
-    const creator = mockCreators[creatorSlug];
+      return res.status(200).json({
+        success: true,
+        devMode: true,
+        data: {
+          username: creator.username,
+          displayName: creator.displayName,
+          bio: creator.bio,
+          tier: creator.tier,
+          avatarUrl: creator.avatarUrl
+        }
+      });
+    }
 
-    if (!creator) {
+    // Query database for creator information
+    const result = await sql`
+      SELECT 
+        c.slug as username,
+        c.display_name,
+        c.bio,
+        c.avatar_url,
+        c.tier,
+        c.is_active
+      FROM creators c
+      WHERE LOWER(c.slug) = LOWER(${creatorSlug})
+      LIMIT 1
+    `;
+
+    if (result.rows.length === 0) {
       return res.status(404).json({ 
         error: 'Creator not found',
         message: `No creator found with slug: ${creatorSlug}` 
+      });
+    }
+
+    const creator = result.rows[0];
+
+    // Check if creator is active
+    if (!creator.is_active) {
+      return res.status(404).json({ 
+        error: 'Creator not found',
+        message: `Creator account is not active` 
       });
     }
 
@@ -64,9 +110,10 @@ module.exports = async (req, res) => {
       success: true,
       data: {
         username: creator.username,
-        displayName: creator.displayName,
+        displayName: creator.display_name,
         bio: creator.bio,
-        tier: creator.tier
+        tier: creator.tier,
+        avatarUrl: creator.avatar_url
       }
     });
 
