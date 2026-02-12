@@ -54,17 +54,29 @@ module.exports = async (req, res) => {
     const hasDatabase = process.env.POSTGRES_URL || process.env.DATABASE_URL;
     
     if (!hasDatabase) {
-      // Development mode: return mock response
+      // Development mode: return mock response with token
       console.log('DEV_NO_DB: Approving join request:', requestId);
+      
+      // Generate token in dev mode too
+      const tokenResult = await generateAccessToken(requestId);
+      
+      const responseData = {
+        requestId,
+        status: 'approved',
+        approvedAt: new Date().toISOString()
+      };
+
+      if (tokenResult.success && tokenResult.token) {
+        responseData.accessToken = {
+          token: tokenResult.token,
+          expiresAt: tokenResult.expiresAt
+        };
+      }
       
       return res.status(200).json({
         success: true,
         devMode: true,
-        data: {
-          requestId,
-          status: 'approved',
-          approvedAt: new Date().toISOString()
-        }
+        data: responseData
       });
     }
 
