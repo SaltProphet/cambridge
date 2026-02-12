@@ -33,6 +33,7 @@ CamBridge is a Next.js 15 application for managing 1-to-1 video sessions with gr
 - ✅ **List Join Requests**: GET /api/creator/requests with pagination
 - ✅ **Approve/Reject Requests**: POST endpoints for request management
 - ✅ **Access Token System**: Generate and revoke access tokens
+- ✅ **Auto-Token Generation**: Tokens automatically generated on approval
 - ✅ **Database Schema**: Users, creators, join_requests, access_tokens tables
 - ✅ **Security**: SQL injection protection, authentication, authorization
 

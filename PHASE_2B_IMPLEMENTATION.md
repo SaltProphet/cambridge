@@ -197,10 +197,16 @@ Approve a pending join request.
   "data": {
     "requestId": "uuid",
     "status": "approved",
-    "approvedAt": "2024-01-15T10:35:00Z"
+    "approvedAt": "2024-01-15T10:35:00Z",
+    "accessToken": {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "expiresAt": "2024-01-22T10:35:00Z"
+    }
   }
 }
 ```
+
+**Note:** The `accessToken` field is automatically generated when the request is approved. If token generation fails, the approval still succeeds but the `accessToken` field will be omitted.
 
 **Business Logic:**
 1. Verify user is authenticated
@@ -208,7 +214,8 @@ Approve a pending join request.
 3. Verify request exists and belongs to creator
 4. Verify request is in `pending` status
 5. Update status to `approved`
-6. Trigger token generation (TODO in next phase)
+6. Automatically generate access token for approved user
+7. Return approval confirmation with access token
 
 ### 4. Reject Join Request
 

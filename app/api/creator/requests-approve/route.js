@@ -1,5 +1,6 @@
 import { requireAuth, getCreatorByUserId } from '../../_utils/auth';
 import { sql } from '@vercel/postgres';
+import { generateAccessToken } from '../../_utils/tokens';
 
 /**
  * POST /api/creator/requests-approve
@@ -48,18 +49,33 @@ export async function POST(req) {
     const hasDatabase = process.env.POSTGRES_URL || process.env.DATABASE_URL;
     
     if (!hasDatabase) {
-      // Development mode: return mock response
+      // Development mode: return mock response with token
       console.log('DEV_NO_DB: Approving join request:', requestId);
+      
+      // Generate token in dev mode too
+      const tokenResult = await generateAccessToken(requestId);
+      
+      const responseData = {
+        requestId,
+        status: 'approved',
+        approvedAt: new Date().toISOString()
+      };
+
+      if (tokenResult.success && tokenResult.token) {
+        responseData.accessToken = {
+          token: tokenResult.token,
+          expiresAt: tokenResult.expiresAt
+        };
+      } else if (!tokenResult.success) {
+        // Log token generation failure but don't fail the approval
+        console.error('Failed to auto-generate token in dev mode:', requestId, tokenResult.error);
+      }
       
       return new Response(
         JSON.stringify({
           success: true,
           devMode: true,
-          data: {
-            requestId,
-            status: 'approved',
-            approvedAt: new Date().toISOString()
-          }
+          data: responseData
         }),
         {
           status: 200,
@@ -127,17 +143,31 @@ export async function POST(req) {
       WHERE id = ${requestId}
     `;
 
-    // TODO: Trigger token generation for the approved user
-    // This will be implemented in the next phase
+    // Automatically generate access token for the approved user
+    const tokenResult = await generateAccessToken(requestId);
+    
+    // Include token in response if successfully generated
+    const responseData = {
+      requestId,
+      status: 'approved',
+      approvedAt: new Date().toISOString()
+    };
+
+    if (tokenResult.success && tokenResult.token) {
+      responseData.accessToken = {
+        token: tokenResult.token,
+        expiresAt: tokenResult.expiresAt
+      };
+    } else if (!tokenResult.success) {
+      // Log token generation failure but don't fail the approval
+      // The request is still approved, token can be generated later
+      console.error('Failed to auto-generate token for approved request:', requestId, tokenResult.error);
+    }
 
     return new Response(
       JSON.stringify({
         success: true,
-        data: {
-          requestId,
-          status: 'approved',
-          approvedAt: new Date().toISOString()
-        }
+        data: responseData
       }),
       {
         status: 200,
