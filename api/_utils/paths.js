@@ -3,7 +3,7 @@
  * @param {Object} req - Vercel request object
  * @returns {string|null} - Normalized lowercase creator slug or null
  */
-export function parseCreatorSlugFromPath(req) {
+function parseCreatorSlugFromPath(req) {
   // Priority 1: Check query parameters
   const querySlug = req.query?.creatorSlug || req.query?.slug || req.query?.creator_slug;
   if (querySlug) {
@@ -21,3 +21,5 @@ export function parseCreatorSlugFromPath(req) {
 
   return null;
 }
+
+module.exports = { parseCreatorSlugFromPath };
